@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat App | M.A Developer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="main-container">
+  <div class="navbar">
+      <div class="nav-left">
+        <button type="button" class="toggle-btn" id="toggleBtn" aria-label="Abrir menu">
+    <img src="images/icon-menu.svg" alt="Menu"/>
+</button>
+
+        <img src="images/logo.svg" alt="" class="main-logo"/>
+      </div>
+      <div class="nav-right">
+          <form class="search-bar">
+              <img src="images/icon-search.svg" alt=""/>
+              <input type="text" placeholder="Search here...">
+          </form>
+          <img src="images/icon-setting.svg" alt="" class="setting" id="masterBtn"/>
+          <a href="#" class="user">
+              <img id="navUserImg" src="images/img-04.jpg" alt=""/>
+          </a>
+      </div>
+  </div>
+
+  <div class="bottom-sec">
+    <div class="side-menu" id="SideMenu">
+        <form class="search-bar">
+            <img src="images/icon-search.svg" alt=""/>
+            <input type="text" placeholder="Search here...">
+        </form>
+        <ul>
+          <li><img src="images/home-icon.png" alt=""/><a href="#" class="active">Home</a></li>
+          <li><img src="images/group-icon.png" alt=""/><a href="#">Groups</a></li>
+          <li><img src="images/profile-icon.png" alt=""/><a href="#">Profile</a></li>
+          <li><img src="images/notification-icon.png" alt=""/><a href="#">Notifications</a></li>
+          <li><img src="images/logout-icon.png" alt=""/><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+        <div class="chat-sec" id="userList"></div>
+    </div>
+
+    <div class="chat-section">
+       <div class="chat-header">
+          <div class="user-header">
+              <span class="user-main">
+                <img id="chatUserImg" src="images/img-01.jpg" alt=""/>
+              </span>
+              <h2 id="chatUserName">Ava Davis</h2>
+          </div>
+          <img src="images/icon-threedot.png" alt="" class="threedot"/>
+       </div>
+
+       <div class="all-chat" id="chatBox"></div>
+       
+       <div class="chat-type">
+          <img src="images/icon-plus.png" alt=""/>
+          <form class="message-type" id="messageForm">
+              <input type="text" id="messageInput" placeholder="Enter Message...">
+              <img src="images/icon-emoji.png" alt="" id="emojiBtn"/>
+              <img src="images/icon-attach.png" alt=""/>
+          </form>
+          <img src="images/icon-send.png" alt="" class="send-icon" id="sendBtn"/>
+       </div>
+       <!-- Bolha moderna "digitando..." -->
+   <div id="typingBubble" class="typing-bubble">
+      <span></span><span></span><span></span>
+   </div>
+
+   <!-- Picker de Emojis -->
+   <div id="emojiPicker" class="emoji-picker"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de perfil -->
+<div id="profileModal" class="modal">
+  <div class="modal-content">
+     <span class="close-btn" id="closeModal">&times;</span>
+     <h2>Configurar Perfil</h2>
+     <img id="previewPhoto" class="preview-img" src="images/img-04.jpg" alt="Preview">
+     <input type="text" id="usernameInput" placeholder="Digite seu nome">
+     <input type="file" id="photoInput" accept="image/*">
+     <div>
+       <button id="saveProfile" class="btn-save">Salvar</button>
+       <button id="closeProfile" class="btn-close">Fechar</button>
+     </div>
+  </div>
+</div>
+
+<!-- Master Login Modal -->
+<div id="masterLoginModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeMasterLogin">&times;</span>
+    <h2>Login Master</h2>
+    <input type="text" id="masterUser" placeholder="Usuário">
+    <input type="password" id="masterPass" placeholder="Senha">
+    <button id="masterLoginBtn" class="btn-save">Entrar</button>
+  </div>
+</div>
+
+<!-- Master Modal -->
+<div id="masterModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeMaster">&times;</span>
+    <h2>Master Panel</h2>
+    <h3>Usuários</h3>
+    <div id="masterUserList"></div>
+    <h3>Mensagens</h3>
+    <div id="masterMsgList"></div>
+
+    <div class="master-actions">
+      <button id="endSessionsBtn" class="btn-danger">Encerrar Todas Sessões</button>
+      <button id="deleteAllMsgsBtn" class="btn-danger">Apagar Todas Mensagens</button>
+      <button id="masterLogoutBtn" class="btn-neutral">Logout Master</button>
+    </div>
+  </div>
+</div>
+
+<!-- Notificação visual -->
+<div id="notif" class="new-message-notif">Nova mensagem!</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
